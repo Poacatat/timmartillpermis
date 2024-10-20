@@ -3,16 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown Timer</title>
+    <title>Timmar Till Permis</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="switch-container">   
+        <label class="switch">
+            <span class="label-text">Sömn</span>
+            <input type="checkbox" id="sleep">
+            <span class="slider"></span>
+            
+        </label>
+        <label class="switch">
+            <span class="label-text">Frukost</span>
+            <input type="checkbox" id="breakfast">
+            <span class="slider"></span>
+        </label>
+        <label class="switch">
+            <span class="label-text">Lunch</span>
+            <input type="checkbox" id="lunch">
+            <span class="slider"></span>
+            
+        </label>
+        <label class="switch">
+            <span class="label-text">Middag</span>
+            <input type="checkbox" id="dinner">
+            <span class="slider"></span>
+        </label>
+        
+        <label class="switch">
+            <span class="label-text">Tid efter HVO</span>
+            <input type="checkbox" id="timeAfterHVO">
+            <span class="slider"></span>
+            
+        </label>
+        <label class="switch">
+            <span class="label-text">Städning</span>
+            <input type="checkbox" id="cleaning">
+            <span class="slider"></span>
+        </label>
+        <label class="switch">
+            <span class="label-text">Morgonpasset</span>
+            <input type="checkbox" id="morning">
+            <span class="slider"></span>
+        </label>
+    </div>
+    
+    
+
+
     <div class="countdown-container">
         <h1>Nedräkning till: <span id="countdown-date"> Permis</span></h1>
         <div id="timer">Loading...</div>
         <button id="cope-button">Cope</button>
     </div>
-
+    
     <div class="container">
     <div class="radio-wrapper">
         <input class="input" name="theme-toggle" id="value-1" type="radio">
@@ -22,6 +67,8 @@
         <label class="number">r1</label>
         </div>
     </div>
+    
+    
     <div class="radio-wrapper">
         <input class="input" name="theme-toggle" id="value-2" checked="true" type="radio">
         <div class="btn">
@@ -40,7 +87,7 @@
     </div>
     </div>
 
-
+    
 
     <div id="floating-text-container"></div>
 

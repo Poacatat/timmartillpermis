@@ -4,6 +4,15 @@
     box-sizing: border-box;
 }
 
+
+colours.light-mode{
+    --background-color: #f5f5f5
+}
+
+colours.dark-mode{
+    --background-colour:#333333;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #000000;
@@ -17,8 +26,8 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-body.light-mode {
-    background-color: #f5f5f5;
+body {
+    background-color: var(--background-color);
     color: #333;
 }
 
@@ -51,23 +60,6 @@ body.light-mode #cope-button {
 body.light-mode #cope-button:hover {
     background-color: #0056b3;
 } 
-/*
-body.light-mode #cope-button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    margin-top: 20px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.2s ease-in-out;
-}
-
-body.light-mode #cope-button:hover {
-    background-color: #0056b3;
-}
-*/
 
 /* Floating Text Styles */
 body.light-mode #floating-text-container {
@@ -75,6 +67,7 @@ body.light-mode #floating-text-container {
     width: 100%;
     height: 200px;  /* Adjust the height of the container as needed */
     overflow: hidden;
+    z-index: 0;
 }
 
 body.light-mode .floating-text {
@@ -85,11 +78,11 @@ body.light-mode .floating-text {
     animation: floatText 10s linear forwards; /* Ensure animation lasts 10s */
     animation-delay: 0s;  /* No delay, starts immediately */
 }
-
+/*
 body.dark-mode {
     background-color: #333333;
     color: #eeeeee;
-}
+}*/
 
 body.dark-mode .countdown-container {
     color: #00b0ff;
@@ -221,9 +214,9 @@ h1 {
     display: flex;
     flex-direction: row;
     position: fixed; /* Fixes the buttons to the bottom-left corner */
-    bottom: 0; /* Aligns them to the bottom */
-    left: 0; /* Aligns them to the left */
-    margin: 20px; /
+    bottom: 0;
+    left: 0;
+    margin: 20px; 
 }
   
   .radio-wrapper {
@@ -439,3 +432,90 @@ h1 {
     line-height: 6.2px;
   }
   
+.switch-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Adds spacing between switches */
+    align-items: flex-end;
+    z-index: 1;
+}
+
+
+
+.switch {
+    
+    --button-width: 3.5em;
+    --button-height: 2em;
+    --toggle-diameter: 1.5em;
+    --button-toggle-offset: calc((var(--button-height) - var(--toggle-diameter)) / 2);
+    --toggle-shadow-offset: 10px;
+    --toggle-wider: 3em;
+    --color-grey: #cccccc;
+    --color-green: #4296f4;
+    --margin: 20px;
+
+    /*position : relative;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 110%;
+}
+
+.switch .label-text {
+    font-size: 14px;       /* Adjust font size of the label text */
+    margin-right: auto;      /* Adds a bit of space between the switch and the text */
+    text-align: left;
+    display: inline-block;
+    line-height: 2em;
+    text-align: center;
+    
+}
+   
+.slider {
+    margin: 0px;
+    display: inline-block;
+    width: var(--button-width);
+    height: var(--button-height);
+    background-color: var(--color-grey);
+    border-radius: calc(var(--button-height) / 2);
+    position: relative;
+    transition: 0.3s all ease-in-out;
+   }
+   
+   .slider::after {
+    content: "";
+    display: inline-block;
+    width: var(--toggle-diameter);
+    height: var(--toggle-diameter);
+    background-color: #fff;
+    border-radius: calc(var(--toggle-diameter) / 2);
+    position: absolute;
+    top: var(--button-toggle-offset);
+    transform: translateX(var(--button-toggle-offset));
+    box-shadow: var(--toggle-shadow-offset) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
+    transition: 0.3s all ease-in-out;
+   }
+   
+   .switch input[type="checkbox"]:checked + .slider {
+    background-color: var(--color-green);
+   }
+   
+   .switch input[type="checkbox"]:checked + .slider::after {
+    transform: translateX(calc(var(--button-width) - var(--toggle-diameter) - var(--button-toggle-offset)));
+    box-shadow: calc(var(--toggle-shadow-offset) * -1) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
+   }
+   
+   .switch input[type="checkbox"] {
+    display: none;
+   }
+   
+   .switch input[type="checkbox"]:active + .slider::after {
+    width: var(--toggle-wider);
+   }
+   
+   .switch input[type="checkbox"]:checked:active + .slider::after {
+    transform: translateX(calc(var(--button-width) - var(--toggle-wider) - var(--button-toggle-offset)));
+   }

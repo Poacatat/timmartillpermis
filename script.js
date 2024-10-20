@@ -1,11 +1,21 @@
 //Todo, add dates for after this, have it be paused during permis
 //Toggle different cope levels so it isnt linear
+// make ti so that all the copes are in a linear list so that the going through all of them is easier
+// also make it so that the cipe just makes them true up untill a point. 
 const permisDates = [[ new Date("October 24, 2024 14:10:00").getTime(), ],[ new Date("October 24, 2024 14:10:00").getTime()]]
 
 
 //Set the date we're counting down to
 const countdownDate = new Date("October 24, 2024 14:10:00").getTime();
 let cope = 0;
+let dinnerCope       = false;
+let breakfastCope    = false;
+let lunchCope        = false;
+let sleepCope        = false;
+let timeAfterHVOCope = false;
+let cleaningCope     = false;
+let morningCope      = false;
+
 
 
 //Function to update the countdown timer
@@ -17,7 +27,7 @@ function updateCountdown() {
 
 
     //FUuck switch
-    if (cope == 0){
+   /* if (cope == 0){
         temp = countSecondsToTarget([[]]);
     }else if (cope == 1){
         temp = countSecondsToTarget([[22,0,5,40]]);
@@ -40,8 +50,11 @@ function updateCountdown() {
         temp = countSecondsToTarget([[22,0,5,40], [11,0,11, 45 ], [16,0,16, 45], [6,0,6,30], [19,30,22,0], [5,40,6,0],  [6,30,8,0], [8,0,11,0]]);
         temp -= subtractSaturday();
         koffein = true;
-    }
+    }*/
+
+   let times = setCopeLevel();
     
+   temp = countSecondsToTarget(times);
     if (koffein){
         temp = temp/2;
     }
@@ -196,6 +209,34 @@ function subtractSaturday(){
 }
 
 
+function setCopeLevel(){
+    copes = [];
+    if (sleepCope) {
+        copes.push([22, 0, 5, 40]);
+    }
+    if (dinnerCope) {
+        copes.push([16, 0, 16, 45]);
+    }
+    if (breakfastCope) {
+        copes.push([6, 0, 6, 30]);
+    }
+    if (lunchCope) {
+        copes.push([11, 0, 11, 45]);
+    }
+    if (timeAfterHVOCope) {
+        copes.push([19, 30, 22, 0]);
+    }
+    if (cleaningCope) {
+        copes.push([5, 40, 6, 0]);
+        copes.push([6, 30, 8, 0]);
+    }
+    if (morningCope) {
+        copes.push([8, 0, 11, 0]);
+    }
+    
+    return copes;
+}
+
 
 
 
@@ -229,6 +270,16 @@ const copeButton = document.getElementById("cope-button");
 
 const textContainer = document.getElementById("floating-text-container");
 copeButton.addEventListener("click", () => {
+    
+
+    toggleSwitch(sleepSwitch);
+    toggleSwitch(dinnerSwitch);
+    toggleSwitch(breakfastSwitch);
+    toggleSwitch(lunchSwitch);
+    toggleSwitch(timeAfterHVOSwitch);
+    toggleSwitch(cleaningSwitch);
+    toggleSwitch(morningSwitch);
+
 
     if (cope < strings.length) {
         const currentString = strings[cope];
@@ -292,3 +343,44 @@ if (darkModeRadio.checked) {
   applyMode('dark');
 }
 
+
+
+const sleepSwitch        = document.getElementById('sleep');
+const dinnerSwitch       = document.getElementById('dinner');
+const breakfastSwitch    = document.getElementById('breakfast');
+const lunchSwitch        = document.getElementById('lunch');
+const timeAfterHVOSwitch = document.getElementById('timeAfterHVO');
+const cleaningSwitch     = document.getElementById('cleaning');
+const morningSwitch      = document.getElementById('morning');
+
+function handleSwitchChange(event) {
+    dinnerCope       = dinnerSwitch.checked;
+    breakfastCope    = breakfastSwitch.checked;
+    lunchCope        = lunchSwitch.checked;
+    sleepCope        = sleepSwitch.checked;
+    timeAfterHVOCope = timeAfterHVOSwitch.checked;
+    cleaningCope     = cleaningSwitch.checked;
+    morningCope      = morningSwitch.checked;
+    updateCountdown();
+}
+
+sleepSwitch.       addEventListener('change', handleSwitchChange);
+dinnerSwitch.      addEventListener('change', handleSwitchChange);
+breakfastSwitch.   addEventListener('change', handleSwitchChange);
+lunchSwitch.       addEventListener('change', handleSwitchChange);
+timeAfterHVOSwitch.addEventListener('change', handleSwitchChange);
+cleaningSwitch.    addEventListener('change', handleSwitchChange);
+morningSwitch.     addEventListener('change', handleSwitchChange);
+
+
+function toggleSwitch(switchId) {
+    const switchElement = document.getElementById(switchId);
+
+    if (switchElement) {
+        // Toggle the checked state (if it's checked, uncheck it; if unchecked, check it)
+        switchElement.checked = !switchElement.checked;
+
+        // Manually trigger the change event, so the listener is aware of the change
+        switchElement.dispatchEvent(new Event('change'));
+    }
+}
