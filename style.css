@@ -5,13 +5,48 @@
 }
 
 
-colours.light-mode{
-    --background-color: #f5f5f5
+[data-theme="dark"]{
+    --background-color: #333333;
+    --color: #00b0ff;
+    --body-color: #eeeeee;
+    --timer-background-color: #444444;
+    --cope-button-background-color: #0044cc;
+    --cope-button-color: #ffffff;
+    --cope-button-background-color-hover:#0033a0;
+    --floating-text-color: #00b0ff;
+    --box-shadow-color: 0 0 10px rgba(0, 0, 0, 0.3);
+    --timer-border: 2px solid #00b0ff;
 }
 
-colours.dark-mode{
-    --background-colour:#333333;
+[data-theme="hacker"]{
+    --background-color: #000000;
+    --body-color: #0f0;
+    --color: #0f0;
+    --timer-background-color: #000000;
+    --cope-button-background-color: #00ff00;
+    --cope-button-color: #000000;
+    --cope-button-background-color-hover:#00b300;
+    --floating-text-color: #00ff00;
+    --box-shadow-color:0 0 10px rgba(0, 0, 0, 0.5);
+    --timer-border: 2px solid #0f0;
+
 }
+
+[data-theme="light"]{
+    --background-color: #f5f5f5;
+    --color: #000;
+    --body-color: #333;
+    --timer-background-color: #fff;
+    --cope-button-background-color: #007bff;
+    --cope-button-color: #ffffff;
+    --cope-button-background-color-hover:#0056b3;
+    --floating-text-color: #000;
+    --box-shadow-color:0 0 10px rgba(0, 0, 0, 0.1);
+    --timer-border: 5px;
+
+}
+
+
 
 body {
     font-family: Arial, sans-serif;
@@ -28,41 +63,41 @@ body {
 
 body {
     background-color: var(--background-color);
-    color: #333;
+    color:            var(--body-color);
 }
 
-body.light-mode .countdown-container {
+body .countdown-container {
     text-align: center;
     margin-bottom: 40px;
 }
 
-body.light-mode h1 {
-    color: #000;
+body h1 {
+    color: var(--color);
     font-size: 2rem;
     margin-bottom: 20px;
 }
 
-body.light-mode #timer {
-    color: #000;
+body #timer {
+    color: var(--color);
     font-size: 3rem;
     font-weight: bold;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--timer-background-color);
+    border: var(--timer-border);
+    box-shadow: var(--box-shadow-color);
 }
 
-body.light-mode #cope-button {
-    background-color: #007bff;
-    color: #ffffff;
+body #cope-button {
+    background-color: var(--cope-button-background-color);
+    color: var(--cope-button-color);
 }
 
-body.light-mode #cope-button:hover {
-    background-color: #0056b3;
+body #cope-button:hover {
+    background-color: var(--cope-button-background-color-hover);
 } 
 
 /* Floating Text Styles */
-body.light-mode #floating-text-container {
+body #floating-text-container {
     position: relative;
     width: 100%;
     height: 200px;  /* Adjust the height of the container as needed */
@@ -70,83 +105,17 @@ body.light-mode #floating-text-container {
     z-index: 0;
 }
 
-body.light-mode .floating-text {
+body .floating-text {
     position: absolute;
     white-space: nowrap;
     font-size: 2rem;
-    color: #000;
+    color: var(--floating-text-color);
     animation: floatText 10s linear forwards; /* Ensure animation lasts 10s */
     animation-delay: 0s;  /* No delay, starts immediately */
 }
-/*
-body.dark-mode {
-    background-color: #333333;
-    color: #eeeeee;
-}*/
 
-body.dark-mode .countdown-container {
-    color: #00b0ff;
-}
 
-body.dark-mode #timer {
-    background-color: #444444;
-    color: #00b0ff;
-    border: 2px solid #00b0ff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
 
-body.dark-mode #cope-button {
-    background-color: #0044cc;
-    color: #ffffff;
-}
-
-body.dark-mode #cope-button:hover {
-    background-color: #0033a0;
-}
-
-body.dark-mode #floating-text-container {
-    height: 200px;
-}
-
-body.dark-mode .floating-text {
-    color: #00b0ff;
-    animation: floatText 10s linear forwards;
-}
-
-body.hacker-mode {
-    background-color: #000000;
-    color: #0f0;
-    font-family: 'Courier New', monospace;
-}
-
-body.hacker-mode .countdown-container {
-    color: #0f0;
-}
-
-body.hacker-mode #timer {
-    background-color: #000000;
-    color: #0f0;
-    border: 2px solid #0f0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-body.hacker-mode #cope-button {
-    background-color: #00ff00;
-    color: #000000;
-}
-
-body.hacker-mode #cope-button:hover {
-    background-color: #00b300;
-}
-
-body.hacker-mode #floating-text-container {
-    height: 200px;
-}
-
-body.hacker-mode .floating-text {
-    color: #00ff00;
-    animation: floatText 10s linear forwards;
-}
 .countdown-container {
     text-align: center;
     color: #1e8d12;

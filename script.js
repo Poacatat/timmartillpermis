@@ -15,7 +15,7 @@ let sleepCope        = false;
 let timeAfterHVOCope = false;
 let cleaningCope     = false;
 let morningCope      = false;
-
+let caffeineCope      = false;
 
 
 //Function to update the countdown timer
@@ -55,7 +55,7 @@ function updateCountdown() {
    let times = setCopeLevel();
     
    temp = countSecondsToTarget(times);
-    if (koffein){
+    if (caffeineCope){
         temp = temp/2;
     }
     const distance = temp;
@@ -211,6 +211,7 @@ function subtractSaturday(){
 
 function setCopeLevel(){
     copes = [];
+     
     if (sleepCope) {
         copes.push([22, 0, 5, 40]);
     }
@@ -271,26 +272,77 @@ const copeButton = document.getElementById("cope-button");
 const textContainer = document.getElementById("floating-text-container");
 copeButton.addEventListener("click", () => {
     
+    
+    
+    
+    const currentString = strings[cope];
+    createFloatingText(currentString);
+    if (cope <8){
+        cope++;
+    }else if (dinnerCope && breakfastCope && lunchCope && sleepCope && timeAfterHVOCope && cleaningCope && morningCope && caffeineCope){
+        createFloatingText("No more cope :(")
+    }else{
+        dinnerCope       = true;
+        breakfastCope    = true;
+        lunchCope        = true;
+        sleepCope        = true;
+        timeAfterHVOCope = true;
+        cleaningCope     = true;
+        morningCope      = true;
+        caffeineCope     = true;
+        toggleSwitch(sleepSwitch.id, sleepCope);
+        toggleSwitch(dinnerSwitch.id, dinnerCope);
+        toggleSwitch(breakfastSwitch.id, breakfastCope);
+        toggleSwitch(lunchSwitch.id, lunchCope);
+        toggleSwitch(timeAfterHVOSwitch.id, timeAfterHVOCope);
+        toggleSwitch(cleaningSwitch.id, cleaningCope);
+        toggleSwitch(morningSwitch.id, morningCope);
+        toggleSwitch(caffeineSwitch.id, caffeineCope);
+    }
+    //COPE INCREASES
 
-    toggleSwitch(sleepSwitch);
-    toggleSwitch(dinnerSwitch);
-    toggleSwitch(breakfastSwitch);
-    toggleSwitch(lunchSwitch);
-    toggleSwitch(timeAfterHVOSwitch);
-    toggleSwitch(cleaningSwitch);
-    toggleSwitch(morningSwitch);
+    if (cope == 1) {
+        sleepCope = true;
+    } else if (cope == 2) {
+        
+        dinnerCope = true;
+        lunchCope = true;
+        
+    } else if (cope == 3) {
+        breakfastCope = true;
+        
+    } else if (cope == 4) {
+        timeAfterHVOCope = true;
+        
+    } else if (cope == 6) {
+        cleaningCope = true;
+        
+    } else if (cope == 7) {
+        morningCope = true;
+        
+    }else if (cope == 8) {
+        caffeineCope = true;        
+    }
+    
+    console.log(cope)
 
+    copeButton.disabled = false;
+    copeButton.textContent = "Cope"
 
-    if (cope < strings.length) {
-        const currentString = strings[cope];
-        createFloatingText(currentString);
-        cope++; 
-        //COPE INCREASES
-    } else {
+    /*  {
         // Once all strings have been displayed, disable the button
         copeButton.disabled = true;
         copeButton.textContent = "No more cope :(";
-    }
+    }*/
+    
+    toggleSwitch(sleepSwitch.id, sleepCope);
+    toggleSwitch(dinnerSwitch.id, dinnerCope);
+    toggleSwitch(breakfastSwitch.id, breakfastCope);
+    toggleSwitch(lunchSwitch.id, lunchCope);
+    toggleSwitch(timeAfterHVOSwitch.id, timeAfterHVOCope);
+    toggleSwitch(cleaningSwitch.id, cleaningCope);
+    toggleSwitch(morningSwitch.id, morningCope);
+    toggleSwitch(caffeineSwitch.id, caffeineCope);
 });
 
 function formatSeconds(seconds) {
@@ -309,6 +361,7 @@ const darkModeRadio = document.getElementById('value-2');
 const hackerModeRadio = document.getElementById('value-3');
 
 //Function to apply the appropriate mode class
+/*
 function applyMode(mode) {
   document.body.classList.remove('light-mode', 'dark-mode', 'hacker-mode');
 
@@ -320,27 +373,55 @@ function applyMode(mode) {
     document.body.classList.add('hacker-mode');
   }
 }
+  */
+
+window.onload = (event) =>{
+    document.documentElement.setAttribute('data-theme', 'dark');
+};
 
 lightModeRadio.addEventListener('change', () => {
   if (lightModeRadio.checked) {
-    applyMode('light');
+    document.documentElement.setAttribute('data-theme', 'light');
   }
 });
 
 darkModeRadio.addEventListener('change', () => {
   if (darkModeRadio.checked) {
-    applyMode('dark');
+    document.documentElement.setAttribute('data-theme', 'dark');
   }
 });
 
 hackerModeRadio.addEventListener('change', () => {
   if (hackerModeRadio.checked) {
-    applyMode('hacker');
+    document.documentElement.setAttribute('data-theme', 'hacker');
+    //applyMode(light)
   }
 });
 
-if (darkModeRadio.checked) {
-  applyMode('dark');
+
+function updateCopeLevel(){
+    if (sleepCope) {
+        copeLevel = 1;
+    }
+    if (dinnerCope && lunchCope) {
+        copeLevel = 2;
+    }
+    if (breakfastCope) {
+        copeLevel = 3;
+    }
+    if (timeAfterHVOCope) {
+        copeLevel = 4;
+    }
+    if (cleaningCope) {
+        copeLevel = 6;
+    }
+    if (morningCope) {
+        copeLevel = 7;
+    }
+    if (caffeineCope){
+        copeLevel = 8;
+    }
+    cope=copeLevel
 }
 
 
@@ -352,15 +433,18 @@ const lunchSwitch        = document.getElementById('lunch');
 const timeAfterHVOSwitch = document.getElementById('timeAfterHVO');
 const cleaningSwitch     = document.getElementById('cleaning');
 const morningSwitch      = document.getElementById('morning');
+const caffeineSwitch     = document.getElementById('caffeine');
 
 function handleSwitchChange(event) {
-    dinnerCope       = dinnerSwitch.checked;
+    dinnerCope      = dinnerSwitch.checked;
     breakfastCope    = breakfastSwitch.checked;
     lunchCope        = lunchSwitch.checked;
     sleepCope        = sleepSwitch.checked;
     timeAfterHVOCope = timeAfterHVOSwitch.checked;
     cleaningCope     = cleaningSwitch.checked;
     morningCope      = morningSwitch.checked;
+    caffeineCope     = caffeineSwitch.checked;
+    updateCopeLevel();
     updateCountdown();
 }
 
@@ -371,16 +455,15 @@ lunchSwitch.       addEventListener('change', handleSwitchChange);
 timeAfterHVOSwitch.addEventListener('change', handleSwitchChange);
 cleaningSwitch.    addEventListener('change', handleSwitchChange);
 morningSwitch.     addEventListener('change', handleSwitchChange);
+caffeineSwitch.     addEventListener('change', handleSwitchChange);
 
 
-function toggleSwitch(switchId) {
+
+function toggleSwitch(switchId, current) {
     const switchElement = document.getElementById(switchId);
-
     if (switchElement) {
         // Toggle the checked state (if it's checked, uncheck it; if unchecked, check it)
-        switchElement.checked = !switchElement.checked;
+        switchElement.checked = current;
 
-        // Manually trigger the change event, so the listener is aware of the change
-        switchElement.dispatchEvent(new Event('change'));
     }
 }
