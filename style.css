@@ -14,8 +14,136 @@ body {
     height: 100vh;
     margin: 0;
     overflow: hidden;
+    transition: background-color 0.3s, color 0.3s;
 }
 
+body.light-mode {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+body.light-mode .countdown-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+body.light-mode h1 {
+    color: #000;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+body.light-mode #timer {
+    color: #000;
+    font-size: 3rem;
+    font-weight: bold;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode #cope-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+body.light-mode #cope-button:hover {
+    background-color: #0056b3;
+}
+
+/* Floating Text Styles */
+body.light-mode #floating-text-container {
+    position: relative;
+    width: 100%;
+    height: 200px;  /* Adjust the height of the container as needed */
+    overflow: hidden;
+}
+
+body.light-mode .floating-text {
+    position: absolute;
+    white-space: nowrap;
+    font-size: 2rem;
+    color: #000;
+    animation: floatText 10s linear forwards; /* Ensure animation lasts 10s */
+    animation-delay: 0s;  /* No delay, starts immediately */
+}
+
+body.dark-mode {
+    background-color: #333333;
+    color: #eeeeee;
+}
+
+body.dark-mode .countdown-container {
+    color: #00b0ff;
+}
+
+body.dark-mode #timer {
+    background-color: #444444;
+    color: #00b0ff;
+    border: 2px solid #00b0ff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode #cope-button {
+    background-color: #0044cc;
+    color: #ffffff;
+}
+
+body.dark-mode #cope-button:hover {
+    background-color: #0033a0;
+}
+
+body.dark-mode #floating-text-container {
+    height: 200px;
+}
+
+body.dark-mode .floating-text {
+    color: #00b0ff;
+    animation: floatText 10s linear forwards;
+}
+
+body.hacker-mode {
+    background-color: #000000;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+}
+
+body.hacker-mode .countdown-container {
+    color: #0f0;
+}
+
+body.hacker-mode #timer {
+    background-color: #000000;
+    color: #0f0;
+    border: 2px solid #0f0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+body.hacker-mode #cope-button {
+    background-color: #00ff00;
+    color: #000000;
+}
+
+body.hacker-mode #cope-button:hover {
+    background-color: #00b300;
+}
+
+body.hacker-mode #floating-text-container {
+    height: 200px;
+}
+
+body.hacker-mode .floating-text {
+    color: #00ff00;
+    animation: floatText 10s linear forwards;
+}
 .countdown-container {
     text-align: center;
     color: #1e8d12;
@@ -78,3 +206,226 @@ h1 {
         left: -100%;  /* End on the left side of the screen */
     }
 }
+
+.container {
+    display: flex;
+    flex-direction: row;
+    position: fixed; /* Fixes the buttons to the bottom-left corner */
+    bottom: 0; /* Aligns them to the bottom */
+    left: 0; /* Aligns them to the left */
+    margin: 20px; /
+}
+  
+  .radio-wrapper {
+    position: relative;
+    height: 38px;
+    width: 84px;
+    margin: 3px;
+  }
+  
+  .radio-wrapper .input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+  }
+  
+  .btn {
+    --primary: #ff184c;
+    --shadow-primary: #fded00;
+    --color: white;
+    --font-size: 9px;
+    --shadow-primary-hue: 180;
+    --shadow-secondary-hue: 60;
+    --shadow-secondary: hsl(var(--shadow-secondary-hue), 90%, 60%);
+    --clip: polygon(11% 0, 95% 0, 100% 25%, 90% 90%, 95% 90%, 85% 90%, 85% 100%, 7% 100%, 0 80%);
+    --border: 5px;
+    --shimmy-distance: 5;
+    --clip-one: polygon(0 2%, 100% 2%, 100% 95%, 95% 95%, 95% 90%, 85% 90%, 85% 95%, 8% 95%, 0 70%);
+    --clip-two: polygon(0 78%, 100% 78%, 100% 100%, 95% 100%, 95% 90%, 85% 90%, 85% 100%, 8% 100%, 0 78%);
+    --clip-three: polygon(0 44%, 100% 44%, 100% 54%, 95% 54%, 95% 54%, 85% 54%, 85% 54%, 8% 54%, 0 54%);
+    --clip-four: polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0);
+    --clip-five: polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0);
+    --clip-six: polygon(0 40%, 100% 40%, 100% 85%, 95% 85%, 95% 85%, 85% 85%, 85% 85%, 8% 85%, 0 70%);
+    --clip-seven: polygon(0 63%, 100% 63%, 100% 80%, 95% 80%, 95% 80%, 85% 80%, 85% 80%, 8% 80%, 0 70%);
+    color: var(--color);
+    text-transform: uppercase;
+    font-size: var(--font-size);
+    letter-spacing: 3px;
+    position: relative;
+    font-weight: 900;
+    width: 100%;
+    height: 100%;
+    line-height: 38px;
+    text-align: center;
+    transition: background 0.2s, 0.3s;
+  }
+  
+  .input:checked + .btn {
+    --primary: #8B00FF;
+    --shadow-primary: #00e572;
+  }
+  
+  .input:hover + .btn {
+    --primary: #cc133c;
+    --font-size: 11px;
+  }
+  
+  .btn:after, .btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    clip-path: var(--clip);
+    z-index: -1;
+  }
+  
+  .btn:before {
+    background: var(--shadow-primary);
+    transform: translate(var(--border), 0);
+  }
+  
+  .btn:after {
+    background: var(--primary);
+  }
+  
+  .btn__tag {
+    position: absolute;
+    padding: 1px 4px;
+    letter-spacing: 1px;
+    line-height: 1;
+    bottom: -5%;
+    right: 5%;
+    font-weight: normal;
+    color: hsl(0, 0%, 0%);
+    font-size: var(--label-size);
+  }
+  
+  .btn__glitch {
+    position: absolute;
+    top: calc(var(--border) * -1);
+    left: calc(var(--border) * -1);
+    right: calc(var(--border) * -1);
+    bottom: calc(var(--border) * -1);
+    background: var(--shadow-primary);
+    text-shadow: 2px 2px var(--shadow-primary), -2px -2px var(--shadow-secondary);
+    clip-path: var(--clip);
+    animation: glitch 2s infinite;
+    display: none;
+  }
+  
+  .input:hover + .btn .btn__glitch {
+    display: block;
+  }
+  
+  .input:checked + .btn .btn__glitch {
+    display: block;
+    animation: glitch 5s infinite;
+  }
+  
+  .btn__glitch:before {
+    content: '';
+    position: absolute;
+    top: calc(var(--border) * 1);
+    right: calc(var(--border) * 1);
+    bottom: calc(var(--border) * 1);
+    left: calc(var(--border) * 1);
+    clip-path: var(--clip);
+    background: var(--primary);
+    z-index: -1;
+  }
+  
+  @keyframes glitch {
+    0% {
+      clip-path: var(--clip-one);
+    }
+  
+    2%, 8% {
+      clip-path: var(--clip-two);
+      transform: translate(calc(var(--shimmy-distance) * -1%), 0);
+    }
+  
+    6% {
+      clip-path: var(--clip-two);
+      transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+    }
+  
+    9% {
+      clip-path: var(--clip-two);
+      transform: translate(0, 0);
+    }
+  
+    10% {
+      clip-path: var(--clip-three);
+      transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+    }
+  
+    13% {
+      clip-path: var(--clip-three);
+      transform: translate(0, 0);
+    }
+  
+    14%, 21% {
+      clip-path: var(--clip-four);
+      transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+    }
+  
+    25% {
+      clip-path: var(--clip-five);
+      transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+    }
+  
+    30% {
+      clip-path: var(--clip-five);
+      transform: translate(calc(var(--shimmy-distance) * -1%), 0);
+    }
+  
+    35%, 45% {
+      clip-path: var(--clip-six);
+      transform: translate(calc(var(--shimmy-distance) * -1%));
+    }
+  
+    40% {
+      clip-path: var(--clip-six);
+      transform: translate(calc(var(--shimmy-distance) * 1%));
+    }
+  
+    50% {
+      clip-path: var(--clip-six);
+      transform: translate(0, 0);
+    }
+  
+    55% {
+      clip-path: var(--clip-seven);
+      transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+    }
+  
+    60% {
+      clip-path: var(--clip-seven);
+      transform: translate(0, 0);
+    }
+  
+    31%, 61%, 100% {
+      clip-path: var(--clip-four);
+    }
+  }
+  
+  .number {
+    background: var(--shadow-primary);
+    color: #323232;
+    font-size: 5.5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    position: absolute;
+    width: 15px;
+    height: 6px;
+    top: 0;
+    left: 81%;
+    line-height: 6.2px;
+  }
+  
