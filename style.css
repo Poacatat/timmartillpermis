@@ -400,7 +400,11 @@ h1 {
     left: 81%;
     line-height: 6.2px;
   }
-  
+
+[data-theme="hacker"] .switch-container{
+  display: none;
+}
+
 .switch-container {
     position: fixed;
     bottom: 20px;
@@ -443,7 +447,12 @@ h1 {
     
 }
    
+[data-theme='hacker'].switch-container {
+  display:none;
+}
+
 .slider {
+    
     margin: 0px;
     display: inline-block;
     width: var(--button-width);
@@ -488,3 +497,18 @@ h1 {
    .switch input[type="checkbox"]:checked:active + .slider::after {
     transform: translateX(calc(var(--button-width) - var(--toggle-wider) - var(--button-toggle-offset)));
    }
+
+
+
+
+[data-theme="light"] canvas {
+  display: none;
+}
+[data-theme="dark"] canvas {
+  display: none;
+}
+[data-theme="hacker"] canvas {
+  position: fixed;
+  font-size: 30px;
+  z-index: -3;
+}

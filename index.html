@@ -5,51 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timmar Till Permis</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="togglebox.css">
 </head>
 <body>
     <div class="switch-container">   
         <label class="switch">
             <span class="label-text">Sömn</span>
-            <input type="checkbox" id="sleep">
+            <input type="checkbox" id="sleepSwitch">
             <span class="slider"></span>
             
         </label>
         <label class="switch">
             <span class="label-text">Frukost</span>
-            <input type="checkbox" id="breakfast">
+            <input type="checkbox" id="breakfastSwitch">
             <span class="slider"></span>
         </label>
         <label class="switch">
             <span class="label-text">Lunch</span>
-            <input type="checkbox" id="lunch">
+            <input type="checkbox" id="lunchSwitch">
             <span class="slider"></span>
             
         </label>
         <label class="switch">
             <span class="label-text">Middag</span>
-            <input type="checkbox" id="dinner">
+            <input type="checkbox" id="dinnerSwitch">
             <span class="slider"></span>
         </label>
         
         <label class="switch">
             <span class="label-text">Tid efter HVO</span>
-            <input type="checkbox" id="timeAfterHVO">
+            <input type="checkbox" id="timeAfterHVOSwitch">
             <span class="slider"></span>
             
         </label>
         <label class="switch">
             <span class="label-text">Städning</span>
-            <input type="checkbox" id="cleaning">
+            <input type="checkbox" id="cleaningSwitch">
             <span class="slider"></span>
         </label>
         <label class="switch">
             <span class="label-text">Morgonpasset</span>
-            <input type="checkbox" id="morning">
+            <input type="checkbox" id="morningSwitch">
             <span class="slider"></span>
         </label>
         <label class="switch">
             <span class="label-text">Koffienbruk</span>
-            <input type="checkbox" id="caffeine">
+            <input type="checkbox" id="caffeineSwitch">
             <span class="slider"></span>
         </label>
     </div>
@@ -95,11 +96,68 @@
     
 
     <div id="floating-text-container"></div>
+    
+        <div class="card" data-theme="hacker">
+            <div class="titlebar">
+                <span class="title">Cope Toggles</span>
+                <span class="buttons">
+                    <button class="minimize">
+                        <svg x="0px" y="0px" viewBox="0 0 10.2 1">
+                            <rect x="0" y="50%" width="10.2"
+                                height="1"></rect>
+                        </svg>
+                    </button>
+                    <button class="maximize">
+                        <svg viewBox="0 0 10 10">
+                            <path d="M0,0v10h10V0H0z M9,9H1V1h8V9z"></path>
+                        </svg>
+                    </button>
+                    <button class="close">
+                        <svg viewBox="0 0 10 10">
+                            <polygon
+                                points="10.2,0.7 9.5,0 5.1,4.4 0.7,0 0,0.7 4.4,5.1 0,9.5 0.7,10.2 5.1,5.8 9.5,10.2 10.2,9.5 5.8,5.1">
+                            </polygon>
+                        </svg>
+                    </button>
+                </span>
+            </div>
+            <div class="cppcode">
+                <pre
+                    id="pre"><code><span class="s1">#include</span> <span class="s2">&lt;iostream&gt;</span>
+            using<span class="s3"> namespace </span>std<span class="sc">;</span>
+            
+            <span class="s3">int</span> <span class="s2">cope()</span> <span class="curlies">{</span>
+                <span class="s7">// Press the bools to change cope leves :)</span>
+            
+                <span class="s3">bool</span> <span class="s4">räkna_sov_timmar</span> <span class="operator">=</span> <button id="sleepButton" class="bool">false</button><span class="sc">;</span>
+                <span class="s3">bool</span> <span class="s4">räkna_frukost_timmar</span> <span class="operator">=</span> <button id="breakfastButton" class="bool">false</button><span class="sc">;</span>
+                <span class="s3">bool</span> <span class="s4">räkna_lunch_timmar</span> <span class="operator">=</span> <button id="lunchButton" class="bool">false</button><span class="sc">;</span>
+                <span class="s3">bool</span> <span class="s4">räkna_middags_timmar</span> <span class="operator">=</span> <button id="dinnerButton" class="bool">false</button><span class="sc">;</span>
+                <span class="s3">bool</span> <span class="s4">räkna_tid_efter_HVO</span> <span class="operator">=</span> <button id="timeAfterHVOButton" class="bool">false</button><span class="sc">;</span>
+                <span class="s3">bool</span> <span class="s4">räkna_städ_timmar</span> <span class="operator">=</span> <button id="cleaningButton" class="bool">false</button><span class="sc">;</span>
+                <span class="s3">bool</span> <span class="s4">räkna_morgonpasset</span> <span class="operator">=</span> <button id="morningButton" class="bool">false</button><span class="sc">;</span>
+                <span class="s3">bool</span> <span class="s4">koffein_2x_multiplier</span> <span class="operator">=</span> <button id="caffeineButton" class="bool">false</button><span class="sc">;</span>
 
+        
+
+        <span class="s6">return</span> o<span class="sc">;</span>
+    
+        <span class="curlies">}</span>
+        </code></pre>
+            </div>
+        </div>
+
+    <canvas data-theme="hacker">
+
+    </canvas>
     
 
-    
-    <script src="script.js"></script>
+    <script src="boxMovement.js"></script>
+    <script src="digitalRain.js"></script>
+    <script src="radioButtons.js"></script>
+    <script type="module" src="script.js"></script>
+
+
 </body>
 </html>
 

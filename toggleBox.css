@@ -1,0 +1,126 @@
+[data-theme="hacker"] .card {
+    width: 500px;
+    height: 550px;
+    background: #15001f;
+    border: 1px solid #c042ff;
+    font-size: 14px;
+    font-family: monospace;
+    overflow: hidden;
+    position: absolute;
+    left: 10%;
+}
+[data-theme="dark"] .card {
+    display: none;
+}
+[data-theme="light"] .card {
+    display: none;
+}
+
+[data-theme="hacker"] .titlebar {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 21px;
+    font-weight: 450;
+    background-color: #2e0043;
+    width: 100%;
+    text-align: left;
+}
+
+[data-theme="hacker"] .title {
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 260px;
+    padding-top: 10px;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+[data-theme="hacker"] .card button {
+    width: 40px;
+    height: 35px;
+    margin-left: -5px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    transition: 0.2s;
+}
+
+[data-theme="hacker"] button svg path,
+[data-theme="hacker"] svg rect,
+[data-theme="hacker"] button svg polygon {
+    fill: #ffffff;
+}
+
+[data-theme="hacker"] button svg {
+    width: 10px;
+    height: 10px;
+}
+
+[data-theme="hacker"] .close:hover {
+    background-color: #e81123;
+}
+
+[data-theme="hacker"] .maximize:hover {
+    background-color: #c042ff2e;
+}
+
+[data-theme="hacker"] .minimize:hover {
+    background-color: #c042ff2e;
+}
+
+[data-theme="hacker"] #pre {
+    overflow: auto;
+    width: 100%;
+    padding: 10px;
+    height: auto;
+    color: #bafff8;
+}
+
+[data-theme="hacker"] .bool {
+    color: #bafff8;
+    cursor: pointer;
+}
+
+[data-theme="hacker"] .curlies {
+    color: #ff0000;
+}
+
+[data-theme="hacker"] .sc {
+    color: #e600ff;
+}
+
+[data-theme="hacker"] .rounds {
+    color: #ffffff;
+}
+
+[data-theme="hacker"] .operator {
+    color: #ffff00;
+}
+
+[data-theme="hacker"] .s1 {
+    color: #22ff00;
+}
+
+[data-theme="hacker"] .s2 {
+    color: #4281ff;
+}
+
+[data-theme="hacker"] .s3 {
+    color: #ff4284;
+}
+
+[data-theme="hacker"] .s4 {
+    color: #ffae00;
+}
+
+[data-theme="hacker"] .s5 {
+    color: #ffffff;
+}
+
+[data-theme="hacker"] .s6 {
+    color: #ffff00;
+}
+
+[data-theme="hacker"] .s7 {
+    color: #008000;
+}
+
