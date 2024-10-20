@@ -44,6 +44,15 @@ body.light-mode #timer {
 }
 
 body.light-mode #cope-button {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+body.light-mode #cope-button:hover {
+    background-color: #0056b3;
+} 
+/*
+body.light-mode #cope-button {
     padding: 10px 20px;
     font-size: 1rem;
     margin-top: 20px;
@@ -58,6 +67,7 @@ body.light-mode #cope-button {
 body.light-mode #cope-button:hover {
     background-color: #0056b3;
 }
+*/
 
 /* Floating Text Styles */
 body.light-mode #floating-text-container {
