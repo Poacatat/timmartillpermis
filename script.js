@@ -4,7 +4,7 @@
 // also make it so that the cipe just makes them true up untill a point. 
 //TODO make a better permanent thing for the cope levels so theyre always chilling togeher
 
-const permisDates = [[ new Date("October 24, 2024 14:10:00").getTime(), ],[ new Date("October 24, 2024 14:10:00").getTime()]]
+const permisDates = [[ new Date("October 12, 2026 17:12:00").getTime()]]
 
 import { updateCountdown } from "./secondCounter.js";
 //import {setup} from "./digitalRain.js";
